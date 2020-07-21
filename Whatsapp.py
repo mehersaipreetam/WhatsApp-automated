@@ -31,7 +31,7 @@ search_box.send_keys(Keys.ENTER)
 path = input('Enter the complete path to the folder\n')
 os.chdir(path)         #Change directory
 lis_files = os.listdir()       # List files in that directory
-
+time.sleep(2)
 # The loop takes all files in folder in the position file
 for file in lis_files:
     img_pin = driver.find_element_by_xpath('//*[@id="main"]/header/div[3]/div/div[2]')
@@ -43,9 +43,15 @@ for file in lis_files:
 
     gallery.send_keys(path + '/' +file)
 
-    time.sleep(2)
+    time.sleep(10)
 
-    caption = driver.find_element_by_xpath('//*[@id="app"]/div/div/div[2]/div[2]/span/div/span/div/div/div[2]/div[1]/span/div/div[2]/div/div[3]/div[1]/div[2]')
-    caption.send_keys('Automated Send... Enjoy ')
+
+    ### Caption for images etc only. If a normal file, cant be used
+    #caption = driver.find_element_by_xpath('//*[@id="app"]/div/div/div[2]/div[2]/span/div/span/div/div/div[2]/div[1]/span/div/div[2]/div/div[3]/div[1]/div[2]')
+    #caption.send_keys('Automated Send... Enjoy ')
+
+
+
     send = driver.find_element_by_xpath('//*[@id="app"]/div/div/div[2]/div[2]/span/div/span/div/div/div[2]/span/div/div')
     send.click()
+    time.sleep(5)
